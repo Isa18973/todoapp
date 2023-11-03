@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
+  h1 To do Items
+  table
+    thead
+    tr
+    th Description
+    th Completed?
+    th Actions
+    tbody
+      each item in toDoItems
+        tr
+        td= item.description
+        td=item.completed
+        td
+        div.row
+          if item.completed
+            a(href=`incomplete/${item.id}`) Mark Incomplete
+            a(href=`complete/${item.id}`) Mark Complete
+        a(href=`delete/${item.id}`) Delete Item
+        a(href=`edit/${item.id}`) Edit Item
+
+a(href="/add") Add Item
   p Welcome to #{title}
